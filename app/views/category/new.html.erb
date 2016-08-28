@@ -1,0 +1,11 @@
+<div class="category-form">
+  <h1>新增類別</h1>
+  <%= form_for @category, url: {controller: 'category', action: 
+    'create' } do |c| %>
+    <div class="form-group">
+      <%= c.label :name, "類別名稱" %>
+      <%= c.text_field :name %>
+      <%= c.submit "新增類別", class: "btn btn-primary btn-sm" %>
+    </div>
+  <% end %>
+</div>
