@@ -22,21 +22,62 @@
       <div class="collapse navbar-collapse navbar-right" id="navbar-list">
         <ul class="nav navbar-nav">
           <li><%= link_to '新增文章', new_post_path %></li>
+          <li><%= link_to '新增分類', new_category_path %></li>
         </ul>
       </div>
 
     </div>
   </div>
+  
+  <div id="wrapper">
+      <!-- Sidebar -->
+      <div id="sidebar-wrapper">
+          <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
+              <li>
+                  <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-dashboard fa-stack-1x "></i></span> 文章分類</a>
+                     <ul class="nav-pills nav-stacked" style="list-style-type:none;">
+                        <% Category.all.map{|p| p.name}.each do |name| %>
+                          <li><%= name %></li>
+                        <% end %>
+                  </ul>
+              </li>
+              <li>
+                  <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-flag fa-stack-1x "></i></span> Shortcut</a>
+                  <ul class="nav-pills nav-stacked" style="list-style-type:none;">
+                      <li><a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-flag fa-stack-1x "></i></span>link1</a></li>
+                      <li><a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-flag fa-stack-1x "></i></span>link2</a></li>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-1">
-      <h1>side bar</h1>
+                  </ul>
+              </li>
+              <li>
+                  <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-cloud-download fa-stack-1x "></i></span>Overview</a>
+              </li>
+              <li>
+                  <a href="#"> <span class="fa-stack fa-lg pull-left"><i class="fa fa-cart-plus fa-stack-1x "></i></span>Events</a>
+              </li>
+              <li>
+                  <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-youtube-play fa-stack-1x "></i></span>About</a>
+              </li>
+              <li>
+                  <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-wrench fa-stack-1x "></i></span>Services</a>
+              </li>
+              <li>
+                  <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-server fa-stack-1x "></i></span>Contact</a>
+              </li>
+          </ul>
+      </div><!-- /#sidebar-wrapper -->
+      <!-- Page Content -->
+      <div id="page-content-wrapper">
+          <div class="container-fluid xyz">
+              <div class="row">
+                  <div class="col-sm-12">
+                      <%= yield %>
+                      <%= debug(params) if Rails.env.development? %>
+                  </div>
+              </div>
+          </div>
       </div>
-      <div class="col-sm-10 col-sm-offset-1">
-        <%= yield %>
-      </div>
-    </div>
+      <!-- /#page-content-wrapper -->
   </div>
 
 </body>

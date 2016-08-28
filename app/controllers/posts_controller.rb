@@ -42,6 +42,12 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
+        if @post.category
+          @post.category= Category.find_by(name: params[:category])
+          @post.save
+        else
+          @post.build_category(name: params[:category])
+        end
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { render :show, status: :ok, location: @post }
       else
