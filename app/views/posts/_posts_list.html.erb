@@ -1,0 +1,16 @@
+<div class="panel panel-default">
+  <% @posts.each do |post| %>
+    <div class="panel-heading">
+      <h3><%= link_to post.title, post %></h3><br \>
+    </div>
+    <div class="panel-body">
+     <%= raw(truncate(post.content, length: 500, omission: (link_to ".....", post), escape: false)) %><br \>
+     <h5>分類: <%= post.category.name if post.category%></h5>
+     <%= post.created_at.to_s(:db) %><br \>
+     <% if user_signed_in? %>
+      <%= link_to 'Edit', edit_post_path(post) %>
+      <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %><br \>
+      <% end %>
+    </div>
+  <% end %>
+</div>
