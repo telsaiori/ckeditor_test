@@ -28,6 +28,8 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
+        category_id = Category.find_by(name: params[:category]).id
+        @post.update(category_id: category_id)
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else
@@ -42,7 +44,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        if @post.category
+        unless @post.category.name == params[:category]
           @post.category= Category.find_by(name: params[:category])
           @post.save
         else

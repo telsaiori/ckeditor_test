@@ -37,7 +37,8 @@
                   <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-dashboard fa-stack-1x "></i></span> 文章分類</a>
                      <ul class="nav-pills nav-stacked" style="list-style-type:none;">
                         <% Category.all.map{|p| p.name}.each do |name| %>
-                          <li><%= name %></li>
+                        <% category_id = Category.find_by(name: name).id %>
+                          <li><%= name %> (<%= Post.where(category_id: category_id).count %>)</li>
                         <% end %>
                   </ul>
               </li>
