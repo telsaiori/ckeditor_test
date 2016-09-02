@@ -12,6 +12,7 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def category_post
     @category = params[:category]
+    @posts = Category.find_by(name: @category).posts
 
   end
 
