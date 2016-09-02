@@ -7,7 +7,7 @@ gem 'ckeditor'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'mini_magick'
-
+gem 'devise'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
