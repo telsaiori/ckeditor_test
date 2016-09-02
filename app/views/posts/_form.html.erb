@@ -23,8 +23,8 @@
 
   <div class="form-group">
   <% default = @post.category ?  @post.category.name : '未分類' %>
-    <%=label_tag :category, "文章分類" %>
-    <%=select_tag :category, options_for_select(Category.all.map{|p|p.name}, default)%>
+  <%=label_tag :category, "文章分類" %>
+  <%=select_tag :category, options_for_select(Category.all.map{|p|p.name}, default)%>
     <div type="type" class="btn btn-xs btn-default add-category">新增分類</div>
   </div>
 
