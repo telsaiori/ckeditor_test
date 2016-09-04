@@ -2,8 +2,11 @@ Rails.application.routes.draw do
 
   devise_for :users
   mount Ckeditor::Engine => '/ckeditor'
-  resources :posts
+  resources :posts do 
+    resources :comments
+  end
   resources :category
+  
   root 'posts#index'
 
   get '/category_post', to: 'posts#category_post'
