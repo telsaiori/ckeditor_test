@@ -13,7 +13,9 @@ class PostsController < ApplicationController
   def category_post
     @category = params[:category]
     @posts = Category.find_by(name: @category).posts
+  end
 
+  def show
   end
 
   # GET /posts/new
