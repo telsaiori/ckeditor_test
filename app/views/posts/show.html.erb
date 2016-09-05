@@ -17,12 +17,8 @@
 <br />
 <br />
 <p>留言列表(<%= @post.comments.count %>)</p>
-<div class="comment-list panel panel-info">
-  <% @post.comments.each do |comment| %>
-    <p class="panel-heading"><%= comment.name %></p>
-    <p class="panel-body"><%= comment.comment %></p>
-  <% end %>
-</div>
+<%= render partial: 'comments/comments_list', objects: @post %>
+
 
 <div class="comment-area col-sm-6">
   <%= render partial: '/comments/comment_form', objects: @comment %>
