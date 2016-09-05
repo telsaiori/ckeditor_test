@@ -1,12 +1,12 @@
-<%= form_for [@post, @post.comments.build] do |f| %>
+<%= form_for @comment, url: post_comments_path(@post) do |f| %>
   <div class="panel panel-default">
     <div class="form-group panel-heading ">
       <%= f.label :name, "訪客暱稱:" %>
-      <%= f.text_field :name %>
+      <%= f.text_field :name, required: true%>
     </div>
 
     <div class="form-group panel-body">
-      <%= f.text_area :comment, placeHolder: '留個言吧..', rows: '6', cols: '100' %>
+      <%= f.text_area :comment, placeHolder: '留個言吧..', rows: '6', cols: '100', required: true %>
     </div>
 
     <%= f.submit '送出', class: 'btn btn-default' %>
