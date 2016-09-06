@@ -1,11 +1,21 @@
 <div class="comment-list panel panel-info">
   <% @post.comments.each do |comment| %>
     <p class="panel-heading"><%= comment.name %></p>
-    <p class="panel-body"><%= comment.comment %><br>
-    <%= link_to '回覆', '#', class: 'reply' %>
-    <%= render partial: 'replies/reply', locals: {comment: comment} %>
-    <% if user_signed_in? %>
-      <%= link_to '刪除留言', post_comment_path(comment.post, comment), method: :delete, data: {confirm: "確定要刪除?"},class: 'pull-right' %></p>
-    <% end %>
+    <div class="panel-body">
+      <p><%= comment.comment %></p><br>
+      <%= link_to '展開留言'+"(#{comment.replies.count})", '#', class: 'more_replies' %><br>
+
+      <%= render partial: 'replies/reply', locals: {comment: comment} %>
+      
+      <%= link_to '回覆', '#', class: 'reply' %>
+      <br>
+      <br>
+      <%= render partial: 'replies/reply_form', locals: {comment: comment} %>
+      
+      <% if user_signed_in? %>
+        <%= link_to '刪除留言', post_comment_path(comment.post, comment), method: :delete, data: {confirm: "確定要刪除?"},class: 'pull-right' %>
+      <% end %>
+    </div>
   <% end %>
 </div>
+
