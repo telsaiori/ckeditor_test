@@ -1,20 +1,26 @@
-<div class="comment-list panel panel-info">
+<div class="media well">
   <% @post.comments.each do |comment| %>
-    <p class="panel-heading"><%= comment.name %></p>
-    <div class="panel-body">
+    <a class="pull-left" href="#">
+        <img class="media-object" src="http://placehold.it/64x64" alt="">
+    </a>
+    <div class="media-body">
+      <h4 class="media-heading"><%=comment.name %>
+           <small>August 25, 2014 at 9:30 PM</small>
+      </h4>
+      
       <p><%= comment.comment %></p><br>
-      <%= link_to '展開留言'+"(#{comment.replies.count})", '#', class: 'more_replies' %><br>
+        <%= link_to '展開留言'+"(#{comment.replies.count})", '#', class: 'more_replies' %><br>
 
-      <%= render partial: 'replies/reply', locals: {comment: comment} %>
-      
-      <%= link_to '回覆', '#', class: 'reply' %>
-      <br>
-      <br>
-      <%= render partial: 'replies/reply_form', locals: {comment: comment} %>
-      
-      <% if user_signed_in? %>
-        <%= link_to '刪除留言', post_comment_path(comment.post, comment), method: :delete, data: {confirm: "確定要刪除?"},class: 'pull-right' %>
-      <% end %>
+        <%= render partial: 'replies/reply', locals: {comment: comment} %>
+        
+        <%= link_to '回覆', '#', class: 'reply' %>
+        <br>
+        <br>
+        <%= render partial: 'replies/reply_form', locals: {comment: comment} %>
+        
+        <% if user_signed_in? %>
+          <%= link_to '刪除留言', post_comment_path(comment.post, comment), method: :delete, data: {confirm: "確定要刪除?"},class: 'pull-right' %>
+        <% end %>
     </div>
   <% end %>
 </div>
