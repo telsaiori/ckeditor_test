@@ -1,12 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Title:</strong>
-  <%= @post.title %>
+  <h1><%= @post.title %></h1>
 </p>
+<hr>
 
+<p><span class="glyphicon glyphicon-time"></span>Posted on <%= @post.created_at.to_s(:db) %></p>
 <p>
-  <strong>Content:</strong>
   <%= raw @post.content %>
 </p>
 
