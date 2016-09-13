@@ -8,6 +8,9 @@ gem 'carrierwave'
 gem 'rmagick'
 gem 'mini_magick'
 gem 'devise'
+gem 'settingslogic'
+gem 'omniauth-facebook'
+gem 'omniauth'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
