@@ -1,6 +1,11 @@
 module CalendarHelper
+
     def calendar(date = Date.today, &block)
       Calendar.new(self, date, block).table
+    end
+
+    def posts_by_dates(date)
+      @posts_by_dates = Post.all.group_by(&:created_at)
     end
 
     class Calendar < Struct.new(:view, :date, :callback)
@@ -11,7 +16,15 @@ module CalendarHelper
 
       def table
         content_tag :table, class: "calendar" do
-          header + week_rows
+          year_header + header + week_rows
+        end
+      end
+
+      def year_header
+        content_tag :tr do
+          content_tag(:th, content_tag(:a, "<<", href: "/posts?date=#{date.prev_month}")) +
+          content_tag(:th, date.strftime("%B %Y"), colspan: "5")+
+          content_tag(:th, content_tag(:a, ">>", href: "/posts?date=#{date.next_month}"))
         end
       end
 

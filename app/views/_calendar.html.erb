@@ -1,5 +1,18 @@
 <div class="calendar_list">
-  <%= calendar do |date| %>
+  <h5 id ="calendar_month">
+<!--     <%= link_to "<<", date: @date.prev_month %>
+    <%= @date.strftime("%B %Y") %>
+    <%= link_to ">>", date: @date.next_month %> -->
+  </h5>
+  <%= calendar @date do |date| %>
     <%= date.day%>
+    <% if @posts_by_dates[date] %>
+    <% byebug %>
+      <ul>
+        <% @posts_by_dates[date].each do |post| %>
+          <li><%= link_to post.title, post %></li>
+        <% end %>
+      </ul>
+    <% end %>
   <% end %>
 </div>
