@@ -27,7 +27,7 @@ module CalendarHelper
       def year_header
         content_tag :tr do
           content_tag(:th, content_tag(:a, "<<", href: "/posts?date=#{date.prev_month}")) +
-          content_tag(:th, date.strftime("%B %Y"), colspan: "5")+
+          content_tag(:th, date.strftime("%B %Y"), colspan: "5", class: "text-center")+
           content_tag(:th, content_tag(:a, ">>", href: "/posts?date=#{date.next_month}"))
         end
       end
