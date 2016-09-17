@@ -10,6 +10,8 @@ class PostsController < ApplicationController
     @date = params[:date]? Date.parse(params[:date]) : Date.today
     if params[:search]
       @posts = Post.where("content like ?", "%#{params[:search]}%")
+    elsif params[:posts_by_date]
+      @posts = Post.where("created_at like ?", "%#{params[:posts_by_date]}%")
     else
       @posts = Post.all
     end

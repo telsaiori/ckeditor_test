@@ -4,9 +4,7 @@
   <%= calendar current_date do |date| %>
     <% date_key = date.strftime %>
     <% if posts_by_date[date_key] %> 
-      <% posts_by_date[date_key].each do |post| %>
-        <%= link_to date.day, post %>
-      <% end %>
+      <%= link_to date.day, posts_path(posts_by_date: date_key) %>
     <% else %>
       <%= date.day%>
     <% end %>
