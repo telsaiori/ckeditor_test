@@ -1,18 +1,14 @@
 <div class="calendar_list">
   <h5 id ="calendar_month">
-<!--     <%= link_to "<<", date: @date.prev_month %>
-    <%= @date.strftime("%B %Y") %>
-    <%= link_to ">>", date: @date.next_month %> -->
   </h5>
-  <%= calendar @date do |date| %>
-    <%= date.day%>
-    <% if @posts_by_dates[date] %>
-    <% byebug %>
-      <ul>
-        <% @posts_by_dates[date].each do |post| %>
-          <li><%= link_to post.title, post %></li>
-        <% end %>
-      </ul>
+  <%= calendar current_date do |date| %>
+    <% date_key = date.strftime %>
+    <% if posts_by_date[date_key] %> 
+      <% posts_by_date[date_key].each do |post| %>
+        <%= link_to date.day, post %>
+      <% end %>
+    <% else %>
+      <%= date.day%>
     <% end %>
   <% end %>
 </div>

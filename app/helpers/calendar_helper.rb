@@ -4,8 +4,12 @@ module CalendarHelper
       Calendar.new(self, date, block).table
     end
 
-    def posts_by_dates(date)
-      @posts_by_dates = Post.all.group_by(&:created_at)
+    def current_date
+      params[:date]? Date.parse(params[:date]) : Date.today
+    end
+
+    def posts_by_date
+      Post.all.group_by{|x| x.created_at.strftime("%Y-%m-%d")} 
     end
 
     class Calendar < Struct.new(:view, :date, :callback)
