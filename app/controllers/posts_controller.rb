@@ -5,7 +5,8 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts_by_dates = Post.all.group_by(&:created_at)
+    @posts_by_date = Post.all.group_by{|x| x.created_at.strftime("%Y-%m-%d")} 
+    # @posts_by_date = Post.all.group_by(&:created_at)
     @date = params[:date]? Date.parse(params[:date]) : Date.today
     if params[:search]
       @posts = Post.where("content like ?", "%#{params[:search]}%")
