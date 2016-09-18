@@ -22,6 +22,7 @@
       <div class="collapse navbar-collapse navbar-right" id="navbar-list">
         <ul class="nav navbar-nav">
           <% if user_signed_in? %>
+            <li><%= link_to '新增遊戲', new_game_path %></li>
             <li><%= link_to '新增文章', new_post_path %></li>
             <li><%= link_to '新增分類', new_category_path %></li>
             <li><%= link_to '登出' + "#{current_user.name} ", destroy_user_session_path, method: :delete %></li>
@@ -71,7 +72,7 @@
                   <%= render partial: '/calendar' %>
               </li>
               <li>
-                  <a href="#"> <span class="fa-stack fa-lg pull-left"><i class="fa fa-cart-plus fa-stack-1x "></i></span>Events</a>
+                  <%= link_to "遊戲reviews", games_path %>
               </li>
               <li>
                   <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-youtube-play fa-stack-1x "></i></span>About</a>
