@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     end
   end
   resources :category
+
+  resources :games
   
   root 'posts#index'
 

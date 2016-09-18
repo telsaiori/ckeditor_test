@@ -1,0 +1,8 @@
+<h1>Game List</h1>
+<% @games.each do |game| %>
+  標題: <%= link_to game.title, game_path(game) %>
+  製作公司: <%= game.company %>
+  平台: <%= game.os %>
+  評分: <%= game.rating %>
+  介紹: <%= game.review %>
+<% end %>
