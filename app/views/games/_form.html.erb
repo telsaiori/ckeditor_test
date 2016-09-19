@@ -6,6 +6,11 @@
   </div>
 
   <div class="form-group">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
+
+  <div class="form-group">
     <%= f.label :company, "遊戲公司" %>
     <%= f.text_field :company, class: "form-control" %>
   </div>
@@ -17,8 +22,7 @@
 
   <div class="form-group">
     <%= f.label :rating, "評分" %>
-    <div id="star-rating"></div>
-
+    <div id="star-rating" data-score=<%= @game.rating %>"></div>
   </div>
 
   <div class="form-group">

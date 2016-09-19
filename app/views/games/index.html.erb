@@ -1,8 +1,10 @@
 <h1>Game List</h1>
-<% @games.each do |game| %>
-  標題: <%= link_to game.title, game_path(game) %>
-  製作公司: <%= game.company %>
-  平台: <%= game.os %>
-  評分: <%= game.rating %>
-  介紹: <%= game.review %>
-<% end %>
+<div class="row">
+  <% @games.each do |game| %>
+  <div class="col-md-3">
+    <div class="thumbail">
+      <%= link_to (image_tag game.image, class: "image img-responsive") unless game.image.blank? %>
+    </div>
+    </div>
+  <% end %>
+</div>
