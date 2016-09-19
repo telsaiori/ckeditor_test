@@ -1,3 +1,4 @@
+
 <%= form_for @game do |f| %>
   <div class="form-group">
     <%= f.label :title, "遊戲名稱" %>
@@ -16,7 +17,8 @@
 
   <div class="form-group">
     <%= f.label :rating, "評分" %>
-    <%= f.text_field :rating, class: "form-control" %>
+    <div id="star-rating"></div>
+
   </div>
 
   <div class="form-group">

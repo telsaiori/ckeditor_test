@@ -15,3 +15,4 @@
 //= require_tree .
 //= require ckeditor/init
 //= require bootstrap-sprockets
+//= require jquery.raty
