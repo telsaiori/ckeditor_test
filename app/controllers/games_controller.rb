@@ -11,6 +11,7 @@ class GamesController < ApplicationController
 
   def create
     @game = Game.new(game_params)
+    byebug
     if @game.save
       redirect_to game_path(@game), notice: "新增成功"
     else

@@ -2,7 +2,7 @@
 標題: <%= @game.title %>
 製作公司: <%= @game.company %>
 平台: <%= @game.os %>
-評分: <%= @game.rating %>
+評分: <div class="star-rating" data-score=<%= @game.rating %> ></div>
 介紹: <%= @game.review %>
 
 <%= link_to "修改", edit_game_path(@game) %>
