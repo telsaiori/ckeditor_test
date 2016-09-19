@@ -1,4 +1,5 @@
 <h1>遊戲介紹</h1>
+  <%= image_tag @game.image.medium.url unless @game.image.blank? %><br>
 標題: <%= @game.title %>
 製作公司: <%= @game.company %>
 平台: <%= @game.os %>
