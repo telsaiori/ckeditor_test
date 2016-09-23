@@ -9,3 +9,9 @@
 
 <%= link_to "修改", edit_game_path(@game) %>
 <%= link_to "刪除", game_path(@game), method: :delete, data: {confirm: "確定刪除?"} %>
+
+<hr>
+<p>使用者review<p>
+<div id="modal-window" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+
+<%= link_to "新增review", new_review_path(@game), {remote: true, 'data-toggle': "modal", 'data-target': '#modal-window'}%>
