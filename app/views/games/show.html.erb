@@ -1,11 +1,11 @@
 <h1>遊戲介紹</h1>
   <%= image_tag @game.image.medium.url unless @game.image.blank? %><br>
-標題: <%= @game.title %>
-製作公司: <%= @game.company %>
-平台: <%= @game.os %>
-評分: <div class="star-rating" data-score=<%= @game.rating %> ></div>
-介紹: <br>
-<span><%= @game.review %></span>
+<p>標題: <%= @game.title %></p>
+<p>製作公司: <%= @game.company %></p>
+<p>平台: <%= @game.os %></p>
+<p>評分: <div class="star-rating" data-score=<%= @game.rating %> ></div></p>
+<p>介紹: </p>
+<span><%= raw @game.review %></span>
 
 <%= link_to "修改", edit_game_path(@game) %>
 <%= link_to "刪除", game_path(@game), method: :delete, data: {confirm: "確定刪除?"} %>
