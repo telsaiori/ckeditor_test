@@ -1,10 +1,11 @@
 <h1>Game List</h1>
 <div class="row">
   <% @games.each do |game| %>
-  <div class="col-md-3">
-    <div class="thumbail">
-      <%= link_to (image_tag game.image, class: "image img-responsive") unless game.image.blank? %>
-    </div>
+    <div class="col-sm-1 thumb game-list">
+      <%= link_to (image_tag game.image.thumb.url, class: "image img-responsive"), game_path(game), class: "thumbnail" unless game.image.blank? %>
+      <p><%= link_to game.title, game_path(game) %></p>
+      <p><div class="star-rating" data-score=<%= game.rating %>> </div> </p>
     </div>
   <% end %>
+
 </div>
