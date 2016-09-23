@@ -40,6 +40,13 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
   end
 
+  def add_review
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
   private
 
   def game_params

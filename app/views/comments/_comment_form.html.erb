@@ -2,7 +2,7 @@
   <div class="panel panel-default">
     <div class="form-group panel-heading ">
       <%= f.label :name, "訪客暱稱:" %>
-      <%= f.text_field :name, required: true%>
+      <%= f.text_field :name, value: current_user.name, required: true%>
     </div>
 
     <div class="form-group panel-body">

@@ -19,7 +19,7 @@
         <%= render partial: 'replies/reply_form', locals: {comment: comment} %>
         
         <% if user_signed_in? %>
-          <%= link_to '刪除留言', post_comment_path(comment.post, comment), method: :delete, data: {confirm: "確定要刪除?"},class: 'pull-right' %>
+          <%= link_to '刪除留言', post_comment_path(comment.commentable, comment), method: :delete, data: {confirm: "確定要刪除?"},class: 'pull-right' %>
         <% end %>
     </div>
   <% end %>

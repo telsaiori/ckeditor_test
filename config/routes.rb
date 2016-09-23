@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :category
 
   resources :games
+  get '/games/:id/new_review', to: 'games#add_review', as: 'new_review'
   
   root 'posts#index'
 

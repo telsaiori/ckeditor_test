@@ -16,3 +16,4 @@
 //= require ckeditor/init
 //= require bootstrap-sprockets
 //= require jquery.raty
+//= require bootstrap/modal
