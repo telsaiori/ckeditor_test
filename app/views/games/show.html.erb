@@ -15,3 +15,17 @@
 <div id="modal-window" class="modal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
 
 <%= link_to "新增review", new_review_path(@game), {remote: true, 'data-toggle': "modal", 'data-target': '#modal-window'}%>
+
+<div class="well game-review">
+  <% @game.comments.each do |comment| %>
+    <div class="media">
+      <div class="media-left">
+        <%= image_tag User.find_by(name: comment.name).image %>
+      </div>
+      <div class="media-body">
+        <%= comment.comment %>
+        <div class="game-rating" data-score=<%= comment.rating %> ></div></p>
+      </div>
+    </div>
+  <% end %>
+</div>
