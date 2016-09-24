@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  before_action :find_game, only:[:show,:edit,:update,:destroy]
+  before_action :find_game, only:[:show,:edit,:update,:destroy, :add_review]
 
   def index
     @games = Game.all
@@ -37,10 +37,10 @@ class GamesController < ApplicationController
   end
 
   def show
-    @game = Game.find(params[:id])
   end
 
   def add_review
+    @review = @game.comments.build
     respond_to do |format|
       format.html
       format.js

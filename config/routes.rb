@@ -13,7 +13,10 @@ Rails.application.routes.draw do
   end
   resources :category
 
-  resources :games
+  resources :games do 
+    resources :comments
+  end
+
   get '/games/:id/new_review', to: 'games#add_review', as: 'new_review'
   
   root 'posts#index'

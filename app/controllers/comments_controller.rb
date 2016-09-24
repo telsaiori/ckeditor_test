@@ -4,13 +4,22 @@ class CommentsController < ApplicationController
   # end
 
   def create
-    @post = Post.find(params[:post_id])
-    @comment = @post.comments.build(comment_params)
-    if @comment.save
-      redirect_to post_path(@post) 
+    if params[:controller] == "posts"
+      @post = Post.find(params[:post_id])
+      @comment = @post.comments.build(comment_params)
+      if @comment.save
+        redirect_to post_path(@post) 
+      else
+        redirect_to post_path(@post) 
+      end
     else
-      redirect_to post_path(@post) 
-      
+      @game = Game.find(params[:game_id])
+      @comment = @game.comments.build(comment_params)
+      if @comment.save
+        redirect_to game_path(@game) 
+      else
+        redirect_to game_path(@game) 
+      end
     end
   end
 
@@ -24,7 +33,7 @@ class CommentsController < ApplicationController
   private
   
   def comment_params
-    params.require(:comment).permit(:name, :comment)
+    params.require(:comment).permit(:name, :comment, :rating)
   end
 
 
