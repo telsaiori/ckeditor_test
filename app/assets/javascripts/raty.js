@@ -17,8 +17,22 @@ $(document).ready(function(){
   });
 
   $('.modal').on('shown.bs.modal', function(){
-     alert('hi');
+    var func = function(){
+      if(null != $('#game-rating'))
+      {
+        $('#game-rating').raty({
+          path: '/assets/',
+          scoreName: 'comment[rating]',
+          score: function() {
+            return $(this).attr('data-score');
+          } 
+        })
+      }
+      else {setTimeout(func, 100);}
+    }
+    setTimeout(func,100);
 
+    /*
     $('#game-rating').raty({
       path: '/assets/',
       scoreName: 'comment[rating]',
@@ -26,8 +40,9 @@ $(document).ready(function(){
         return $(this).attr('data-score');
       } 
     });
-
+*/
   });
+
   
   $('.game-rating').raty({
     path: '/assets/',
