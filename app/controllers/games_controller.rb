@@ -1,5 +1,7 @@
 class GamesController < ApplicationController
   before_action :find_game, only:[:show,:edit,:update,:destroy, :add_review]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :never_review?, only: [:add_review]
 
   def index
     @games = Game.all
@@ -37,6 +39,7 @@ class GamesController < ApplicationController
   end
 
   def show
+    @my_review = @game.comments.find_by(name: current_user.name)
   end
 
   def add_review
@@ -47,6 +50,8 @@ class GamesController < ApplicationController
     end
   end
 
+
+
   private
 
   def game_params
@@ -56,5 +61,12 @@ class GamesController < ApplicationController
   def find_game
     @game = Game.find(params[:id])
   end
+
+  def never_review?
+    if !!Game.find(params[:id]).comments.find_by(name: current_user.name)
+      render nothing: true, status: 401
+    end
+  end
+
 
 end

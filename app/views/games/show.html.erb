@@ -7,14 +7,31 @@
 <p>介紹: </p>
 <span><%= raw @game.review %></span>
 
-<%= link_to "修改", edit_game_path(@game) %>
-<%= link_to "刪除", game_path(@game), method: :delete, data: {confirm: "確定刪除?"} %>
+<% if user_signed_in? %>
+  <%= link_to "修改", edit_game_path(@game) %>
+  <%= link_to "刪除", game_path(@game), method: :delete, data: {confirm: "確定刪除?"} %>
+<% end %>
+<% if user_signed_in? && @my_review%>
+  <hr>
+  <p>My Review</p>
+  <div class="well my-game-review media"> 
+    <div class="media-left">
+      <%= image_tag current_user.image%>
+    </div>
+    <div class="media-body">
+      <%= @my_review.comment %>
+      <p><%= link_to "刪除", game_comment_path(@game, @my_review), method: :delete %>|<%= link_to "編輯", edit_review_path(@my_review), {remote: true, 'data-toggle': "modal", 'data-target': "#modal-window"} %><p>
+    </div>
+  </div>
+  <hr>
+<% end %>
 
-<hr>
 <p>使用者review<p>
 <div id="modal-window" class="modal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
 
-<%= link_to "新增review", new_review_path(@game), {remote: true, 'data-toggle': "modal", 'data-target': '#modal-window'}%>
+<% unless user_signed_in? && has_user_review?(@game)%>
+  <%= link_to "新增review", new_review_path(@game), {remote: true, 'data-toggle': "modal", 'data-target': '#modal-window'}%>
+<% end %>
 
 <div class="well game-review">
   <% @game.comments.each do |comment| %>
@@ -25,6 +42,9 @@
       <div class="media-body">
         <%= comment.comment %>
         <div class="game-rating" data-score=<%= comment.rating %> ></div></p>
+        <% if user_signed_in? %>
+          <p><%= link_to "刪除", game_comment_path(@game, comment), method: :delete, data: {confirm: "確定刪除?" } %></p>
+        <% end %>
       </div>
     </div>
   <% end %>
