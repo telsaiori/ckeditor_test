@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <h1><%= @post.title %></h1>
 </p>
@@ -19,8 +17,8 @@
 <p>留言列表(<%= @post.comments.count %>)</p>
 <%= render partial: 'comments/comments_list', objects: @post %>
 
-
-<div class="comment-area col-sm-6">
-  <%= render partial: '/comments/comment_form', objects: @comment %>
-</div>
-
+<% if user_signed_in? %>
+  <div class="comment-area col-sm-6">
+    <%= render partial: '/comments/comment_form', objects: @comment %>
+  </div>
+<% end %>

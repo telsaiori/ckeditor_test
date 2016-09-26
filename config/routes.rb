@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   get '/games/:id/new_review', to: 'games#add_review', as: 'new_review'
   
+  get 'comments/:id/edit_review', to: "comments#edit_review", as: "edit_review"
+
   root 'posts#index'
 
   get '/category_post', to: 'posts#category_post'

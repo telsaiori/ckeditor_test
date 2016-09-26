@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :show]
 
   # GET /posts
   # GET /posts.json
@@ -13,7 +13,7 @@ class PostsController < ApplicationController
     elsif params[:posts_by_date]
       @posts = Post.where("created_at like ?", "%#{params[:posts_by_date]}%")
     else
-      @posts = Post.all
+      @posts = Post.order('created_at desc')
     end
   end
 
