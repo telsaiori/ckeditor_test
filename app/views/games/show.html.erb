@@ -7,7 +7,7 @@
 <p>介紹: </p>
 <span><%= raw @game.review %></span>
 
-<% if user_signed_in? %>
+<% if is_admin?(current_user) %>
   <%= link_to "修改", edit_game_path(@game) %>
   <%= link_to "刪除", game_path(@game), method: :delete, data: {confirm: "確定刪除?"} %>
 <% end %>
@@ -20,6 +20,7 @@
     </div>
     <div class="media-body">
       <%= @my_review.comment %>
+      <div class="game-rating" data-score=<%= @my_review.rating %> ></div></p>
       <p><%= link_to "刪除", game_comment_path(@game, @my_review), method: :delete %>|<%= link_to "編輯", edit_review_path(@my_review), {remote: true, 'data-toggle': "modal", 'data-target': "#modal-window"} %><p>
     </div>
   </div>
@@ -42,7 +43,7 @@
       <div class="media-body">
         <%= comment.comment %>
         <div class="game-rating" data-score=<%= comment.rating %> ></div></p>
-        <% if user_signed_in? %>
+        <% if is_admin?(current_user)  %>
           <p><%= link_to "刪除", game_comment_path(@game, comment), method: :delete, data: {confirm: "確定刪除?" } %></p>
         <% end %>
       </div>

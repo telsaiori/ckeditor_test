@@ -21,12 +21,14 @@
 
       <div class="collapse navbar-collapse navbar-right" id="navbar-list">
         <ul class="nav navbar-nav">
-          <% if user_signed_in? %>
+          
+          <% if is_admin?(current_user) %>
             <li><%= link_to '新增遊戲', new_game_path %></li>
             <li><%= link_to '新增文章', new_post_path %></li>
             <li><%= link_to '新增分類', new_category_path %></li>
+          <% end %>
+          <% if user_signed_in? %>
             <li><%= link_to '登出' + "#{current_user.name} ", destroy_user_session_path, method: :delete %></li>
-
           <% else %>
             <li><%= link_to '登入', new_user_session_path %></li>
             <li><%=link_to '使用FACEBOOK登入', user_facebook_omniauth_authorize_path %></li>
