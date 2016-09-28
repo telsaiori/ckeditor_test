@@ -5,7 +5,7 @@
   </div>
    <div class="modal-body well">
      <%= form_for [@game, @review] do |f|%>
-      <%= f.hidden_field :name, value: current_user.name %>
+      <%= f.hidden_field :name, value: current_user.name == nil ? current_user.email : current_user.name %>
       
       <div class="form-group">
         <%= f.label :rating %>

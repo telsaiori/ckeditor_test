@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [:edit, :update, :destroy, :edit_review]
 
   def create
-    if params[:controller] == "posts"
+    if params[:post_id]
       @post = Post.find(params[:post_id])
       @comment = @post.comments.build(comment_params)
       if @comment.save
@@ -43,10 +43,9 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    controller = params[:controller]
-    if @comment.destroy && controller == "posts"
+    if @comment.destroy && !!params[:post_id]
       redirect_to post_path(@comment.commentable), notice: '留言刪除成功'
-    else @comment.destroy && controller == "games"
+    else @comment.destroy && !!params[:game_id]
       redirect_to game_path(@comment.commentable), notice: '留言刪除成功'
     end
   end

@@ -3,7 +3,7 @@
 
     <% comment.replies.each do |reply| %>
       <a class="pull-left" href="#">
-        <img class="media-object" src="http://placehold.it/64x64" alt="">
+        <%= image_tag user_image(User.find_by(name: reply.name)), class: "media-object" %>
       </a>
       <div class="media-body">
           <h4 class="media-heading"><%= reply.name %>

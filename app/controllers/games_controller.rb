@@ -39,7 +39,9 @@ class GamesController < ApplicationController
   end
 
   def show
-    @my_review = @game.comments.find_by(name: current_user.name)
+    if user_signed_in?
+      @my_review = @game.comments.find_by(name: current_user.name)
+    end
   end
 
   def add_review

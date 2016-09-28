@@ -16,7 +16,7 @@
   <p>My Review</p>
   <div class="well my-game-review media"> 
     <div class="media-left">
-      <%= image_tag current_user.image%>
+      <%= image_tag user_image(current_user)%>
     </div>
     <div class="media-body">
       <%= @my_review.comment %>
@@ -38,10 +38,12 @@
   <% @game.comments.each do |comment| %>
     <div class="media">
       <div class="media-left">
-        <%= image_tag User.find_by(name: comment.name).image %>
+      <% commented_user = User.find_by(name: comment.name) %>
+        <%= image_tag user_image(commented_user) %>
       </div>
       <div class="media-body">
-        <%= comment.comment %>
+        <p><%= commented_user.name %></p>
+        <span><%= comment.comment %></span>
         <div class="game-rating" data-score=<%= comment.rating %> ></div></p>
         <% if is_admin?(current_user)  %>
           <p><%= link_to "刪除", game_comment_path(@game, comment), method: :delete, data: {confirm: "確定刪除?" } %></p>
