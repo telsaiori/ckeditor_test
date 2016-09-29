@@ -20,3 +20,4 @@
 #ignore settingslogic
 /config/application.yml
 /config/database.yml
+
