@@ -1,0 +1,14 @@
+defaults: &defaults
+  facebook:
+    app_no: 1603214326639370
+    app_id: d8117d7c9017a20ecd100235a5935247
+
+development:
+  <<: *defaults
+  neat_setting: 800
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
