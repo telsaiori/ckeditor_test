@@ -62,7 +62,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        unless @post.category.name == params[:category]
+        unless @post.category.try(:name) == params[:category]
           @post.category= Category.find_by(name: params[:category])
           @post.save
         else
