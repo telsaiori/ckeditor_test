@@ -21,6 +21,10 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+  adapter: postgresql
+  encoding: utf8
+  database: d5vj5nd7j4ask8
+  port: 5432
+  username: kxuvrlopxqfwds
+  password: ip81zAPo6pMdr12v7DtyaIqyLT
   
