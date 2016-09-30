@@ -17,7 +17,6 @@ class User < ApplicationRecord
 
 
   def set_name
-    byebug
     if self.name == nil
       self.name = self.email
     end
