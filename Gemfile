@@ -11,6 +11,7 @@ gem 'devise'
 gem 'settingslogic'
 gem 'omniauth-facebook'
 gem 'omniauth'
+gem 'fog'
 # Use sqlite3 as the database for Active Record
 
 # Use SCSS for stylesheets
