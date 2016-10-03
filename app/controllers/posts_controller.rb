@@ -12,6 +12,7 @@ class PostsController < ApplicationController
     if params[:search]
       @posts = Post.where("content like ?", "%#{params[:search]}%")
     elsif params[:posts_by_date]
+      byebug
       @posts = Post.where("created_at like ?", "%#{params[:posts_by_date]}%")
     else
       @posts = Post.order('created_at desc')
