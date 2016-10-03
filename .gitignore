@@ -20,7 +20,7 @@ tmp/
 
 /config/application.yml
 /config/database.yml
-/config/secret.yml
+/config/secrets.yml
 
 
 
