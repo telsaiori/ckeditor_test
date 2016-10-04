@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'guestbooks/index'
+
   devise_for :users, controllers: {
 
     omniauth_callbacks: 'users/omniauth_callbacks'
@@ -16,6 +18,8 @@ Rails.application.routes.draw do
   resources :games do 
     resources :comments
   end
+
+  resources :guestbooks, defaults: { format: 'json' }, only: %i(index show create)
 
   get '/games/:id/new_review', to: 'games#add_review', as: 'new_review'
   

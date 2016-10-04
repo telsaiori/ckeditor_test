@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   before_validation :set_name
+  has_many :comments
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

@@ -1,0 +1,8 @@
+<div ng-controller="GuestbooksCtrl">
+  <div class="guestbook" ng-repeat="guestbook in guestbooks">
+    <span>{{$index}}.</span>
+    <span class="name">{{guestbook.name}}</span>
+    <span class="time">{{guestbook.created_at | date: 'yyyy-MM-dd HH:mm:ss'}}</span>
+    <div class="post">{{guestbook.post}}</div>
+  </div>
+</div>

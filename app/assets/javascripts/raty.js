@@ -31,7 +31,13 @@ $(document).ready(function(){
       }
       else {setTimeout(func, 100);}
     }
-    setTimeout(func,100);
+    setTimeout(func,500);
+
+  });
+
+  // $('body').on('hidden.bs.modal', '.modal', function () {
+  //   $(this).removeData('bs.modal');
+  // });
 
     /*
     $('#game-rating').raty({
@@ -42,7 +48,7 @@ $(document).ready(function(){
       } 
     });
 */
-  });
+  
 
   
   $('.game-rating').raty({

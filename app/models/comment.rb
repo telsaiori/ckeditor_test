@@ -3,4 +3,5 @@ class Comment < ApplicationRecord
   has_many :replies, dependent: :destroy
   validates :name, presence: true
   validates :comment, presence: true
+  belongs_to :user
 end

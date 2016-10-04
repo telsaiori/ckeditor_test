@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+source "https://rails-assets.org"
 
 ruby '2.3.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -12,6 +13,8 @@ gem 'settingslogic'
 gem 'omniauth-facebook'
 gem 'omniauth'
 # Use sqlite3 as the database for Active Record
+gem 'rails-assets-angular'
+gem 'rails-assets-angular-resource'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0.6'
