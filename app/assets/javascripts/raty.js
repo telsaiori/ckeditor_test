@@ -18,6 +18,7 @@ $(document).ready(function(){
 
   $('.modal').on('shown.bs.modal', function(){
     var func = function(){
+
       if(null != $('#game-rating'))
       {
         $('#game-rating').raty({
