@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="BoardSample">
+<html>
 <head>
   <title>Workspace</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
@@ -77,7 +77,7 @@
                   <%= link_to "遊戲reviews", games_path %>
               </li>
               <li>
-                  <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-youtube-play fa-stack-1x "></i></span>GuestBook</a>
+                  <%= link_to "GuestBook", mboards_path %>
               </li>
               <li>
                   <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-wrench fa-stack-1x "></i></span>About</a>

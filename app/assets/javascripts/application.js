@@ -12,9 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require angular
-//= require angular-resource
-//= require board_sample
 //= require_tree .
 //= require ckeditor/init
 //= require bootstrap-sprockets

@@ -1,0 +1,7 @@
+<h1>新增留言</h1><br>
+<%= form_for @post do |f| %>
+  <%= f.label :name, current_user.name %>
+  <%= f.hidden_field :name, value: current_user.name %>
+  <%= f.text_area :post, required: true %>
+  <%= f.submit %>
+<% end %>

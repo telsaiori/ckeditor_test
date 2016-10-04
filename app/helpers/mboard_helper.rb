@@ -1,0 +1,2 @@
+module MboardHelper
+end

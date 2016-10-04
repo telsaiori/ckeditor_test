@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'mboard/index'
+
+  get 'mboard/new'
+
   get 'guestbooks/index'
 
   devise_for :users, controllers: {
@@ -19,7 +23,7 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  resources :guestbooks, defaults: { format: 'json' }, only: %i(index show create)
+  resources :mboards
 
   get '/games/:id/new_review', to: 'games#add_review', as: 'new_review'
   
