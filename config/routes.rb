@@ -32,6 +32,8 @@ Rails.application.routes.draw do
   root 'posts#index'
 
   get '/category_post', to: 'posts#category_post'
+
+  post '/mboards/add_comment', to: 'mboards#add_comment'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

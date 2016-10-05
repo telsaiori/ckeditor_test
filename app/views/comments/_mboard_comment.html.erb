@@ -1,0 +1,17 @@
+<%= form_for comment, url: { controller: 'mboards', action: 'add_comment'} do |f| %>
+  <div class="panel panel-default">
+    <div class="form-group panel-heading ">
+      <%= f.label :name, "訪客暱稱:" %>
+      <%= f.text_field :name, value: current_user.name, required: true%>
+    </div>
+
+    <div class="form-group panel-body">
+      <%= f.text_area :comment, placeHolder: '留個言吧..', rows: '3', cols: '100', required: true %>
+      <%= hidden_field_tag "comment[post_id]", "#{comment.commentable_id}" %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+    </div>
+
+    <%= f.submit '送出', class: 'btn btn-primary' %>
+    <div class="btn btn-warning comment-cancel">取消</div>
+  </div>
+<% end %>

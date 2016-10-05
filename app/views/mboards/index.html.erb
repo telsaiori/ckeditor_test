@@ -14,8 +14,27 @@
     </div>
     <div class="panel-body">
       <%= post.post %><br>
-      <i class="fa fa-reply" aria-hidden="true"><%= link_to "回覆" %></i>
+      <i class="fa fa-reply" aria-hidden="true"><%= link_to "回覆", 'javascript:;',class: "display-comment" %></i>
+      <div class="mboard-comment">
+        <%= render partial: 'comments/mboard_comment', locals: {comment: post.comments.build}  %>
+      </div>
     </div>
+    <% post.reload %>
+    <% if post.comments.any? %>
+      <% post.comments.each do |comment| %>
+        <div class="media well">
+          <div class="media-left">
+            <%= image_tag comment.user.image %>
+          </div>
+          <div class="media-body">
+            <span><%= comment.comment %></span>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+      
+    </ul>
+
   </div>
   
   
