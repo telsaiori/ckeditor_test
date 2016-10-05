@@ -1,8 +1,8 @@
 <%= form_for @comment, url: post_comments_path(@post) do |f| %>
   <div class="panel panel-default">
     <div class="form-group panel-heading ">
-      <%= f.label :name, "訪客暱稱:" %>
-      <%= f.text_field :name, value: current_user.name, required: true%>
+      <%= f.label :name, value: current_user.name %>
+      <%= f.hidden_field :name, value: current_user.name %>
     </div>
 
     <div class="form-group panel-body">

@@ -14,10 +14,12 @@
     </div>
     <div class="panel-body">
       <%= post.post %><br>
-      <i class="fa fa-reply" aria-hidden="true"><%= link_to "回覆", 'javascript:;',class: "display-comment" %></i>
-      <div class="mboard-comment">
-        <%= render partial: 'comments/mboard_comment', locals: {comment: post.comments.build}  %>
-      </div>
+      <% if user_signed_in? %>
+        <i class="fa fa-reply" aria-hidden="true"><%= link_to "回覆", 'javascript:;',class: "display-comment" %></i>
+        <div class="mboard-comment">
+          <%= render partial: 'comments/mboard_comment', locals: {comment: post.comments.build}  %>
+        </div>
+      <% end %>
     </div>
     <% post.reload %>
     <% if post.comments.any? %>
