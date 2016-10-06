@@ -1,6 +1,7 @@
 class MboardsController < ApplicationController
   def index
     @posts = Mboard.order("created_at desc")
+    @comment = Comment.new
   end
 
   def new

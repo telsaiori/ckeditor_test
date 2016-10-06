@@ -17,11 +17,10 @@
       <% if user_signed_in? %>
         <i class="fa fa-reply" aria-hidden="true"><%= link_to "回覆", 'javascript:;',class: "display-comment" %></i>
         <div class="mboard-comment">
-          <%= render partial: 'comments/mboard_comment', locals: {comment: post.comments.build}  %>
+          <%= render partial: 'comments/mboard_comment', locals: {post_id: post.id} %>
         </div>
       <% end %>
     </div>
-    <% post.reload %>
     <% if post.comments.any? %>
       <% post.comments.each do |comment| %>
         <div class="media well">
