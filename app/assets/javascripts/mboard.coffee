@@ -9,3 +9,14 @@ $(document).ready ->
   
   $(document).on 'click', '.comment-cancel', ->
     $(this).parents('.mboard-comment').removeClass('show')
+
+  $('.panel-body').on 'click', '.edit-comment-form, .cancel-mcomment', (event) ->
+    toggleEditor $(this).closest('.panel-body')
+
+toggleEditor = ($container) ->
+  $container.find('.viewer, .editor').toggle()
+  $bodyField = $container.find('.editor .body')
+  if $bodyField.is(':visible')
+    $bodyField
+      .val($container.find('.viewer .body').text())
+      .select()

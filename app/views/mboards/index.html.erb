@@ -13,14 +13,34 @@
       </h3>
     </div>
     <div class="panel-body">
-      <%= post.post %><br>
-      <% if user_signed_in? %>
-        <i class="fa fa-reply" aria-hidden="true"><%= link_to "回覆", 'javascript:;',class: "display-comment" %></i>
-        <div class="mboard-comment">
-          <%= render partial: 'comments/mboard_comment', locals: {post_id: post.id} %>
+      <div class="comment-body viewer">
+        <%= post.post %>
+        <% if user_signed_in? %>
+          <i class="fa fa-reply" aria-hidden="true"><%= link_to "回覆", 'javascript:;',class: "display-comment" %></i><br>
+          <div class="mboard-comment">
+            <%= render partial: 'comments/mboard_comment', locals: {post_id: post.id} %>
+          </div>
+        <% end %>
+        <% if post.name == current_user.name%>
+          <%= button_tag 'Edit', class: 'edit-comment-form', type: :button %>
+        <% end %>
+      </div>
+      
+
+
+      <% if post.name == current_user.name%>
+
+        <div class="mboard-edit editor" %>
+          <%= render partial: 'edited_comment', locals: {post: post} %>
+          <%= button_tag 'Cancel', class: 'cancel-mcomment', type: :button %>
         </div>
+        <%= link_to "刪除", mboard_path(post), method: :delete, data: {confirm: "確定刪除?"} %>
       <% end %>
+
     </div>
+
+   
+    
     <% if post.comments.any? %>
       <% post.comments.each do |comment| %>
         <div class="media well">
