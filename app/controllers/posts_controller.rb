@@ -6,7 +6,6 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    byebug
     @posts_by_date = Post.all.group_by{|x| x.created_at.strftime("%Y-%m-%d")} 
     # @posts_by_date = Post.all.group_by(&:created_at)
     @date = params[:date]? Date.parse(params[:date]) : Date.today
