@@ -22,19 +22,19 @@
           </div>
         <% end %>
         <% if post.name == current_user.name%>
-          <%= button_tag 'Edit', class: 'edit-comment-form', type: :button %>
+          <%= button_tag '編輯', class: 'edit-comment-form btn btn-primary btn-xs', type: :button %>
+          <%= link_to "刪除", mboard_path(post), method: :delete, data: {confirm: "確定刪除?"}, class: 'btn btn-warning btn-xs' %>
         <% end %>
       </div>
       
 
 
       <% if post.name == current_user.name%>
-
         <div class="mboard-edit editor" %>
           <%= render partial: 'edited_comment', locals: {post: post} %>
           <%= button_tag 'Cancel', class: 'cancel-mcomment', type: :button %>
         </div>
-        <%= link_to "刪除", mboard_path(post), method: :delete, data: {confirm: "確定刪除?"} %>
+        
       <% end %>
 
     </div>
@@ -43,12 +43,13 @@
     
     <% if post.comments.any? %>
       <% post.comments.each do |comment| %>
-        <div class="media well">
+        <div class="media well" id= <%= comment.id %> >
           <div class="media-left">
             <%= image_tag comment.user.image %>
           </div>
           <div class="media-body">
-            <span><%= comment.comment %></span>
+            <span><%= comment.comment %></span><br>
+            <%= link_to "刪除", mboard_comment_path(post, comment), method: :delete, remote: true %>
           </div>
         </div>
       <% end %>

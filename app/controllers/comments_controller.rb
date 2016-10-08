@@ -45,6 +45,11 @@ class CommentsController < ApplicationController
   def destroy
     if @comment.destroy && !!params[:post_id]
       redirect_to post_path(@comment.commentable), notice: '留言刪除成功'
+    elsif @comment.destroy && !!params[:mboard_id]
+      respond_to do |format|
+        format.html { redirect_to mboards_path, notice: '留言刪d除成功' }
+        format.js 
+      end
     else @comment.destroy && !!params[:game_id]
       redirect_to game_path(@comment.commentable), notice: '留言刪除成功'
     end

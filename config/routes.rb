@@ -23,7 +23,9 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  resources :mboards
+  resources :mboards do
+    resources :comments
+  end
 
   get '/games/:id/new_review', to: 'games#add_review', as: 'new_review'
   
@@ -34,6 +36,7 @@ Rails.application.routes.draw do
   get '/category_post', to: 'posts#category_post'
 
   post '/mboards/add_comment', to: 'mboards#add_comment'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
