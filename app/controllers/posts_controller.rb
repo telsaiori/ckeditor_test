@@ -6,6 +6,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
+    byebug
     @posts_by_date = Post.all.group_by{|x| x.created_at.strftime("%Y-%m-%d")} 
     # @posts_by_date = Post.all.group_by(&:created_at)
     @date = params[:date]? Date.parse(params[:date]) : Date.today
@@ -17,13 +18,14 @@ class PostsController < ApplicationController
     else
       @posts = Post.order('created_at desc')
     end
+    @posts = @posts.page(params[:page])
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def category_post
     @category = params[:category]
-    @posts = Category.find_by(name: @category).posts
+    @posts = Category.find_by(name: @category).try(:posts).page(params[:page])
   end
 
   def show
