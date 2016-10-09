@@ -14,6 +14,9 @@ gem 'omniauth'
 # Use sqlite3 as the database for Active Record
 gem "font-awesome-rails"
 gem 'kaminari'
+gem 'redcarpet'
+gem 'coderay'
+gem 'rails-bootstrap-markdown'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0.6'

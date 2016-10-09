@@ -14,7 +14,7 @@
     </div>
     <div class="panel-body">
       <div class="comment-body viewer">
-        <%= post.post %>
+        <%= sanitize(markdown(post.post)) %>
         <% if user_signed_in? %>
           <i class="fa fa-reply" aria-hidden="true"><%= link_to "回覆", 'javascript:;',class: "display-comment" %></i><br>
           <div class="mboard-comment">
