@@ -61,7 +61,7 @@ class GamesController < ApplicationController
   end
 
   def find_game
-    @game = Game.find(params[:id])
+    @game = Game.includes(:comments).find(params[:id])
   end
 
   def never_review?

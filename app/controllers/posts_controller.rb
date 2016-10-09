@@ -17,7 +17,7 @@ class PostsController < ApplicationController
     else
       @posts = Post.order('created_at desc')
     end
-    @posts = @posts.page(params[:page])
+    @posts = @posts.includes(:category).page(params[:page])
   end
 
   # GET /posts/1

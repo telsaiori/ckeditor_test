@@ -3,7 +3,7 @@ class MboardsController < ApplicationController
   before_action :set_post, only: [:show, :destroy, :update]
   
   def index
-    @posts = Mboard.order("created_at desc")
+    @posts = Mboard.includes(:comments).order("created_at desc")
     @comment = Comment.new
   end
 
