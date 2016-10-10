@@ -10,7 +10,7 @@ class PostsController < ApplicationController
     # @posts_by_date = Post.all.group_by(&:created_at)
     @date = params[:date]? Date.parse(params[:date]) : Date.today
     if params[:search]
-      @posts = Post.where("content like ?", "%#{params[:search]}%")
+      @posts = Post.where("content LIKE :search OR title LIKE :search", search: "%#{params[:search]}%")
     elsif params[:posts_by_date]
       d = params[:posts_by_date].to_datetime
       @posts = Post.where(created_at: d.beginning_of_day..d.end_of_day)
