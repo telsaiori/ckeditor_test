@@ -53,7 +53,7 @@
       <div id="sidebar-wrapper">
           <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
               <li>
-                  <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-dashboard fa-stack-1x "></i></span> 文章分類</a>
+                  <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-caret-down fa-stack-1x "></i></span> 文章分類</a>
                      <ul class="nav-pills nav-stacked" style="list-style-type:none;">
                         <% Category.all.map{|p| p.name}.each do |name| %>
                         <% category_id = Category.find_by(name: name).id %>
@@ -62,28 +62,37 @@
                   </ul>
               </li>
               <li>
-                  <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-flag fa-stack-1x "></i></span> GitBook</a>
+                  <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-book fa-stack-1x "></i></span> GitBook</a>
                   <ul class="nav-pills nav-stacked" style="list-style-type:none;">
-                      <li><a href="https://www.gitbook.com/book/telsaiori/sql_code-school"><span class="fa-stack fa-lg pull-left"><i class="fa fa-flag fa-stack-1x "></i></span>SQL筆記(Code School)</a></li>
-                      <li><a href="https://www.gitbook.com/book/telsaiori/building-blog-memo"><span class="fa-stack fa-lg pull-left"><i class="fa fa-flag fa-stack-1x "></i></span>Blog製作筆記</a></li>
+                      <li><a href="https://www.gitbook.com/book/telsaiori/sql_code-school"><span class="fa-stack fa-lg pull-left"><i class="fa fa-book fa-stack-1x "></i></span>SQL筆記(Code School)</a></li>
+                      <li><a href="https://www.gitbook.com/book/telsaiori/building-blog-memo"><span class="fa-stack fa-lg pull-left"><i class="fa fa-book fa-stack-1x "></i></span>Blog製作筆記</a></li>
 
                   </ul>
               </li>
               <li>
-                  <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-cloud-download fa-stack-1x "></i></span>Calendar</a>
+                  <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-calendar fa-stack-1x "></i></span>Calendar</a>
                   <%= render partial: '/calendar' %>
               </li>
               <li>
-                  <%= link_to "遊戲reviews", games_path %>
+                  <%= link_to games_path do%>
+                    遊戲reviews
+                    <span class="fa-stack fa-lg pull-left">
+                    <i class="fa fa-gamepad fa-stack-1x "></i>
+                  <% end %>
               </li>
               <li>
-                  <%= link_to "GuestBook", mboards_path %>
+                  <%= link_to mboards_path do %>
+                    留言板
+                    <span class="fa-stack fa-lg pull-left">
+                    <i class="fa fa-commenting fa-stack-1x"></i>
+                  <% end %>
               </li>
               <li>
-                  <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-wrench fa-stack-1x "></i></span>About</a>
-              </li>
-              <li>
-                  <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-server fa-stack-1x "></i></span>Contact</a>
+                <%= link_to about_path do %>
+                About
+                <span class="fa-stack fa-lg pull-left">
+                <i class="fa fa-info fa-stack-1x "></i>
+                <% end %>
               </li>
           </ul>
       </div><!-- /#sidebar-wrapper -->

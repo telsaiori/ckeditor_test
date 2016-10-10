@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'about/about', as: 'about'
+
   get 'mboard/index'
 
   get 'mboard/new'
