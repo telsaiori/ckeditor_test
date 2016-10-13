@@ -16,7 +16,8 @@ $(document).ready(function(){
     }
   });
 
-  $('.modal').on('shown.bs.modal', function(){
+  $('.modal').on('shown.bs.modal', function(e){
+    
     var func = function(){
 
       if(null != $('#game-rating'))

@@ -34,7 +34,6 @@
         <% if post.name == current_user.name%>
           <div class="mboard-edit editor" %>
             <%= render partial: 'edited_comment', locals: {post: post} %>
-            <%= button_tag 'Cancel', class: 'cancel-mcomment', type: :button %>
           </div>
         <% end %>
       <% end %>
@@ -48,7 +47,7 @@
       <% post.comments.each do |comment| %>
         <div class="media well" id= <%= comment.id %> >
           <div class="media-left">
-            <%= image_tag comment.user.image %>
+            <%= image_tag user_image(current_user) %>
           </div>
           <div class="media-body">
             <span><%= comment.comment %></span><br>

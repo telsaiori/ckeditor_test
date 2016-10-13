@@ -1,4 +1,7 @@
 <%= form_for post do |f| %>
-  <%= f.text_area :post %>
-  <%= f.submit "送出" %>
+  <div class="form-group">
+    <%= f.text_area :post, rows: "5", class: 'form-control' %>
+  </div>
+  <%= f.submit "送出", class: 'btn btn-primary btn-xs' %>
+  <%= button_tag 'Cancel', class: 'cancel-mcomment btn btn-warning btn-xs', type: :button %>
 <% end %>
