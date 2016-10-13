@@ -7,7 +7,7 @@ class RepliesController < ApplicationController
     if @reply.save
       redirect_to post_url(@post)
     else
-      redirect_to post_url(@post), notice: '回覆失敗'
+      redirect_to post_url(@post), alert: '回覆失敗'
     end
 
   end

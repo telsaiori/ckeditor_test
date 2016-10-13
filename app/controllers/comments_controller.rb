@@ -7,17 +7,17 @@ class CommentsController < ApplicationController
       @post = Post.find(params[:post_id])
       @comment = @post.comments.build(comment_params)
       if @comment.save
-        redirect_to post_path(@post) 
+        redirect_to post_path(@post), notice: "回覆成功"
       else
-        redirect_to post_path(@post) 
+        redirect_to post_path(@post), alert: "回復失敗"
       end
     else
       @game = Game.find(params[:game_id])
       @comment = @game.comments.build(comment_params)
       if @comment.save
-        redirect_to game_path(@game) 
+        redirect_to game_path(@game), notice: "回覆成功" 
       else
-        redirect_to game_path(@game) 
+        redirect_to game_path(@game), alert: "回復失敗" 
       end
     end
   end

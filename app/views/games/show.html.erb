@@ -30,7 +30,7 @@
 <p>使用者review<p>
 <div id="modal-window" class="modal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
 
-<% unless user_signed_in? && has_user_review?(@game)%>
+<% if user_signed_in? && !has_user_review?(@game)%>
   <%= link_to "新增review", new_review_path(@game), {remote: true, 'data-toggle': "modal", 'data-target': '#modal-window'}%>
 <% end %>
 

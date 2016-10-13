@@ -21,21 +21,24 @@
             <%= render partial: 'comments/mboard_comment', locals: {post_id: post.id} %>
           </div>
         <% end %>
-        <% if post.name == current_user.name%>
-          <%= button_tag '編輯', class: 'edit-comment-form btn btn-primary btn-xs', type: :button %>
-          <%= link_to "刪除", mboard_path(post), method: :delete, data: {confirm: "確定刪除?"}, class: 'btn btn-warning btn-xs' %>
+        <% if user_signed_in? %>
+          <% if post.name == current_user.name%>
+            <%= button_tag '編輯', class: 'edit-comment-form btn btn-primary btn-xs', type: :button %>
+            <%= link_to "刪除", mboard_path(post), method: :delete, data: {confirm: "確定刪除?"}, class: 'btn btn-warning btn-xs' %>
+          <% end %>
         <% end %>
       </div>
       
 
-
-      <% if post.name == current_user.name%>
-        <div class="mboard-edit editor" %>
-          <%= render partial: 'edited_comment', locals: {post: post} %>
-          <%= button_tag 'Cancel', class: 'cancel-mcomment', type: :button %>
-        </div>
-        
+      <% if user_signed_in? %>
+        <% if post.name == current_user.name%>
+          <div class="mboard-edit editor" %>
+            <%= render partial: 'edited_comment', locals: {post: post} %>
+            <%= button_tag 'Cancel', class: 'cancel-mcomment', type: :button %>
+          </div>
+        <% end %>
       <% end %>
+        
 
     </div>
 
