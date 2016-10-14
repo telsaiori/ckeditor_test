@@ -84,14 +84,19 @@ class Admin::PostsController < ApplicationController
   # DELETE /posts/1.json
   def destroy
     if @post.destroy
-      redirect_to posts_url, notice: 'Post was successfully destroyed.'
+      redirect_to admin_posts_path, notice: '刪除成功'
     end
+  end
+
+  def multi_del
+    Post.destroy_all(id: params[:del_posts])
+    redirect_to admin_posts_path, notice: '刪除成功'
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
-      @post = Post.includes(:comments).find(params[:id])
+      @post = Post.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

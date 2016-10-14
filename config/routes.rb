@@ -30,7 +30,11 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :posts
+    resources :posts do
+      collection do
+        delete 'multi_del'
+      end
+    end
   end
 
   get '/games/:id/new_review', to: 'games#add_review', as: 'new_review'
