@@ -1,4 +1,5 @@
 class Admin::PostsController < ApplicationController
+  layout "admin"
 
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :auth_user, except: [:index, :show, :category_post]
