@@ -1,0 +1,7 @@
+<h1>文章列表</h1>
+<% if @posts.blank?%>
+  <p>沒有相關文章</p>
+<% else %>
+  <%= render partial: 'posts_list', object: @posts%>
+<% end %>
+

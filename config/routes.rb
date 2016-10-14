@@ -29,6 +29,10 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  namespace :admin do
+    resources :posts
+  end
+
   get '/games/:id/new_review', to: 'games#add_review', as: 'new_review'
   
   get 'comments/:id/edit_review', to: "comments#edit_review", as: "edit_review"
