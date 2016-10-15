@@ -2,21 +2,31 @@
 
 <h1>Admin Comments</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<%= form_tag multi_del_admin_comments_path, method: :delete do %>
+  <div class="table-responsive"> 
+    <table class="table">
+      <thead>
+        <tr>
+          <th>選取</th>
+          <th>留言人</th>
+          <th>內容</th>
+          <th>文章標題</th>
+        </tr>
+      </thead>
 
-  <tbody>
-    <% @admin_comments.each do |admin_comment| %>
-      <tr>
-        <td><%= link_to 'Show', post_path(admin_comment.commentable_id), target: '_blank' %></td>
-        <td><%= link_to 'Destroy', admin_post_comment_path(admin_comment.commentable_id, admin_comment), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+      <tbody>
+        <% @admin_comments.each do |admin_comment| %>
+          <tr>
+            <td><%= check_box_tag "del_comments[]", admin_comment.id %></td>
+            <td><%= admin_comment.name %></td>
+            <td><%= admin_comment.comment %></td>
+            <td><%= link_to Post.find(admin_comment.commentable_id).title, post_path(admin_comment.commentable_id), target: '_blank'  %></td>
+            <td><%= link_to 'Destroy', admin_comment_path(admin_comment), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <%= submit_tag "刪除所選留言", data: {contirm: '確定刪除?'}, class: 'btn btn-danger' %>
+<% end %>
 

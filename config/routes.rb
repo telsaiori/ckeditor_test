@@ -36,7 +36,11 @@ Rails.application.routes.draw do
       collection do
         delete 'multi_del'
       end
-    resources :comments
+    end
+    resources :comments do
+      collection do
+        delete 'multi_del'
+      end
     end
   end
 

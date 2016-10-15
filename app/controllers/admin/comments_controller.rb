@@ -61,6 +61,11 @@ class Admin::CommentsController < ApplicationController
     end
   end
 
+  def multi_del
+    Comment.destroy_all(id: params[:del_comments])
+    redirect_to admin_comments_path, notice: '刪除成功'
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_admin_comment
