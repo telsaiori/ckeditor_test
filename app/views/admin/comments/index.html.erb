@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Admin Comments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admin_comments.each do |admin_comment| %>
+      <tr>
+        <td><%= link_to 'Show', post_path(admin_comment.commentable_id), target: '_blank' %></td>
+        <td><%= link_to 'Destroy', admin_post_comment_path(admin_comment.commentable_id, admin_comment), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+

@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   get 'guestbooks/index'
 
+  get 'admin/comments/index'
+
   devise_for :users, controllers: {
 
     omniauth_callbacks: 'users/omniauth_callbacks'
@@ -34,6 +36,7 @@ Rails.application.routes.draw do
       collection do
         delete 'multi_del'
       end
+    resources :comments
     end
   end
 
