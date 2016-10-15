@@ -1,0 +1,57 @@
+<h1>遊戲介紹</h1>
+  <%= image_tag @admin_game.image.medium.url unless @admin_game.image.blank? %><br>
+<p>標題: <%= @admin_game.title %></p>
+<p>製作公司: <%= @admin_game.company %></p>
+<p>平台: <%= @admin_game.os %></p>
+<p>評分: <div class="star-rating" data-score=<%= @admin_game.rating %> ></div></p>
+<p>介紹: </p>
+<span><%= raw @admin_game.review %></span>
+
+<% if is_admin?(current_user) %>
+  <%= link_to "修改", edit_game_path(@admin_game) %>
+  <%= link_to "刪除", game_path(@admin_game), method: :delete, data: {confirm: "確定刪除?"} %>
+<% end %>
+<% if user_signed_in? && @my_review%>
+  <hr>
+  <p>My Review</p>
+  <div class="well my-game-review media"> 
+    <div class="media-left">
+      <%= image_tag user_image(current_user)%>
+    </div>
+    <div class="media-body">
+      <%= @my_review.comment %>
+      <div class="game-rating" data-score=<%= @my_review.rating %> ></div></p>
+      <p><%= link_to "刪除", game_comment_path(@admin_game, @my_review), method: :delete %>|<%= link_to "編輯", edit_review_path(@my_review), {remote: true, 'data-toggle': "modal", 'data-target': "#modal-window"} %><p>
+    </div>
+  </div>
+  <hr>
+<% end %>
+
+<p>使用者review<p>
+<div id="modal-window" class="modal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+
+<% if user_signed_in? && !has_user_review?(@admin_game)%>
+  <%= link_to "新增review", new_review_path(@admin_game), {remote: true, 'data-toggle': "modal", 'data-target': '#modal-window'}%>
+<% end %>
+
+<div class="well game-review">
+  <% @admin_game.comments.each do |comment| %>
+    <div class="media">
+      <div class="media-left">
+      <% commented_user = User.find_by(name: comment.name) %>
+        <%= image_tag user_image(commented_user) %>
+      </div>
+      <div class="media-body">
+        <p><%= commented_user.name %></p>
+        <span><%= comment.comment %></span>
+        <div class="game-rating" data-score=<%= comment.rating %> ></div></p>
+        <% if is_admin?(current_user)  %>
+          <p><%= link_to "刪除", game_comment_path(@admin_game, comment), method: :delete, data: {confirm: "確定刪除?" } %></p>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to 'Edit', edit_admin_game_path(@admin_game) %> |
+<%= link_to 'Back', admin_games_path %>

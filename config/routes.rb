@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   get 'admin/comments/index'
 
+
   devise_for :users, controllers: {
 
     omniauth_callbacks: 'users/omniauth_callbacks'
@@ -43,6 +44,16 @@ Rails.application.routes.draw do
       end
     end
     resources :replies do
+      collection do
+        delete 'multi_del'
+      end
+    end
+    resources :games do
+      collection do
+        delete 'multi_del'
+      end
+    end
+    resources :mboards do
       collection do
         delete 'multi_del'
       end

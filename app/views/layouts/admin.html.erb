@@ -75,25 +75,18 @@
 
 
               <li>
-                  <%= link_to games_path do%>
-                    遊戲reviews
+                  <%= link_to admin_games_path do%>
+                    遊戲reviews管理
                     <span class="fa-stack fa-lg pull-left">
-                    <i class="fa fa-gamepad fa-stack-1x "></i>
+                    <i class="fa fa-cog fa-stack-1x "></i>
                   <% end %>
               </li>
               <li>
-                  <%= link_to mboards_path do %>
-                    留言板
+                  <%= link_to admin_mboards_path do %>
+                    留言板管理
                     <span class="fa-stack fa-lg pull-left">
-                    <i class="fa fa-commenting fa-stack-1x"></i>
+                    <i class="fa fa-cog fa-stack-1x"></i>
                   <% end %>
-              </li>
-              <li>
-                <%= link_to about_path do %>
-                About
-                <span class="fa-stack fa-lg pull-left">
-                <i class="fa fa-info fa-stack-1x "></i>
-                <% end %>
               </li>
           </ul>
       </div><!-- /#sidebar-wrapper -->

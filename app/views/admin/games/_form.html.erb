@@ -1,0 +1,34 @@
+
+<%= form_for @admin_game do |f| %>
+  <div class="form-group">
+    <%= f.label :title, "遊戲名稱" %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :company, "遊戲公司" %>
+    <%= f.text_field :company, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :os, "平台" %>
+    <%= f.text_field :os, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :rating, "評分" %>
+    <div id="star-rating" data-score=<%= @admin_game.rating %>></div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :review, "介紹" %>
+    <%= f.cktext_area :review, class: "form-control" %>
+  </div>
+
+  <%= f.submit "送出", class: "btn btn-primary" %>
+<% end %>

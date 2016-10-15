@@ -1,0 +1,1 @@
+json.array! @admin_mboards, partial: 'admin_mboards/admin_mboard', as: :admin_mboard

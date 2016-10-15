@@ -1,0 +1,6 @@
+<%= form_for(admin_mboard) do |f| %>
+  <%= f.label :name, current_user.name %>
+  <%= f.hidden_field :name, value: current_user.name %>
+  <%= f.text_area :post, "data-provide": "markdown", required: true %><br>
+  <%= f.submit "送出", class: 'btn btn-primary'%>
+<% end %>

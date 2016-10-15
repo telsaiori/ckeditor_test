@@ -1,0 +1,6 @@
+<h1>Game List</h1>
+<% if @admin_games.blank? %>
+  <p>沒有相關文章</p>
+<% else %>
+  <%= render partial: 'games_list', object: @admin_games %>
+<% end %>

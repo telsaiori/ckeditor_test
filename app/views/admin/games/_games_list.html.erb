@@ -1,0 +1,26 @@
+<%= form_tag multi_del_admin_games_path, method: :delete do %>
+  <div class="table-responsive"> 
+    <table class="table">
+      <thead>
+        <th>選取</th>
+        <th>日期</th>
+        <th>標題</th>
+        <th>分類</th>
+      </thead>
+      <tbody> 
+        <% @admin_games.each do |game| %>
+          <tr>
+            <td><%= check_box_tag "del_games[]", game.id %></td>
+            <td><%= game.created_at.strftime("%Y/%m/%d") %></td>
+            <td><%= link_to game.title, game_path(game), target: '_blank' %></td>
+            <td><%= link_to "編輯", edit_game_path(game), target: '_blank', class: 'btn btn-info btn-xs' %></td>
+            <td><%= link_to "刪除", admin_game_path(game), method: :delete, class: 'btn btn-danger btn-xs' %></td>
+          <tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <%= submit_tag "刪除所選文章", data: { confirm: '確定刪除?' }, class: 'btn btn-danger' %>
+<% end %>
+<%= paginate @admin_games %>
