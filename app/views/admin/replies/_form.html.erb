@@ -1,0 +1,27 @@
+<%= form_tag multi_del_admin_replies_path, method: :delete do %>
+  <div class="table-responsive"> 
+    <table class="table">
+      <thead>
+        <tr>
+          <th>選取</th>
+          <th>留言人</th>
+          <th>內容</th>
+          <th>文章標題</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @admin_replies.each do |admin_reply| %>
+          <tr>
+            <td><%= check_box_tag "del_replies[]", admin_reply.id %></td>
+            <td><%= admin_reply.name %></td>
+            <td><%= admin_reply.reply %></td>
+            <td><%= link_to find_blog(admin_reply).title, post_path(find_blog(admin_reply)) %></td>
+            <td><%= link_to 'Destroy', admin_reply_path(admin_reply), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <%= submit_tag "刪除所選留言", data: {contirm: '確定刪除?'}, class: 'btn btn-danger' %>
+<% end %>

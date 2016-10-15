@@ -1,0 +1,1 @@
+json.array! @admin_replies, partial: 'admin_replies/admin_reply', as: :admin_reply

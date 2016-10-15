@@ -42,6 +42,11 @@ Rails.application.routes.draw do
         delete 'multi_del'
       end
     end
+    resources :replies do
+      collection do
+        delete 'multi_del'
+      end
+    end
   end
 
   get '/games/:id/new_review', to: 'games#add_review', as: 'new_review'
