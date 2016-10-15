@@ -1,4 +1,5 @@
 class Admin::CommentsController < ApplicationController
+  layout "admin"
   before_action :set_admin_comment, only: [:show, :edit, :update, :destroy]
 
   # GET /admin/comments

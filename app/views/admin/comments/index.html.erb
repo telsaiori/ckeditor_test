@@ -1,32 +1,19 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Admin Comments</h1>
+<h1>Blog留言管理</h1>
+<div class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+    選擇管理區塊
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+    <li role="presentation"><%= link_to 'Blog留言管理', admin_comments_path, role: 'menuitem', tabindex: '-1' %></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+  </ul>
+</div>
+<br>
 
-<%= form_tag multi_del_admin_comments_path, method: :delete do %>
-  <div class="table-responsive"> 
-    <table class="table">
-      <thead>
-        <tr>
-          <th>選取</th>
-          <th>留言人</th>
-          <th>內容</th>
-          <th>文章標題</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @admin_comments.each do |admin_comment| %>
-          <tr>
-            <td><%= check_box_tag "del_comments[]", admin_comment.id %></td>
-            <td><%= admin_comment.name %></td>
-            <td><%= admin_comment.comment %></td>
-            <td><%= link_to Post.find(admin_comment.commentable_id).title, post_path(admin_comment.commentable_id), target: '_blank'  %></td>
-            <td><%= link_to 'Destroy', admin_comment_path(admin_comment), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-  <%= submit_tag "刪除所選留言", data: {contirm: '確定刪除?'}, class: 'btn btn-danger' %>
-<% end %>
+<%= render partial: 'form' %>
 
