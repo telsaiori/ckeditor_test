@@ -1,0 +1,34 @@
+
+<%= form_for(@post) do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :title %><br>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :content %><br>
+    <%= f.cktext_area :content %>
+  </div>
+
+  <div class="form-group">
+  <% default = @post.category ?  @post.category.name : '未分類' %>
+  <%=label_tag :category, "文章分類" %>
+  <%=select_tag :category, options_for_select(Category.all.map{|p|p.name}, default)%>
+    <div type="type" class="btn btn-xs btn-default add-category">新增分類</div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "送出文章", class: "btn btn-primary" %>
+  </div>
+<% end %>

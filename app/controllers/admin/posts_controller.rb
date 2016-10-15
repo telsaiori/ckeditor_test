@@ -35,7 +35,7 @@ class Admin::PostsController < ApplicationController
 
   # GET /posts/new
   def new
-    @post = Post.new
+    @post = Admin::Post.new
   end
 
   # GET /posts/1/edit
@@ -45,18 +45,14 @@ class Admin::PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(post_params)
+    @post = Admin::Post.new(post_params)
 
-    respond_to do |format|
-      if @post.save
-        category_id = Category.find_by(name: params[:category]).id
-        @post.update(category_id: category_id)
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
-        format.json { render :show, status: :created, location: @post }
-      else
-        format.html { render :new }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+    if @post.save
+      category_id = Category.find_by(name: params[:category]).id
+      @post.update(category_id: category_id)
+      redirect_to admin_post_path(@post), notice: 'Post was successfully created.'
+    else
+      render :new 
     end
   end
 
@@ -96,11 +92,11 @@ class Admin::PostsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
-      @post = Post.find(params[:id])
+      @post = Admin::Post.includes(:category).find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :content)
+      params.require(:admin_post).permit(:title, :content)
     end
 end

@@ -24,7 +24,7 @@
           
           <% if is_admin?(current_user) %>
             <li><%= link_to '新增遊戲', new_game_path %></li>
-            <li><%= link_to '新增文章', new_post_path %></li>
+            <li><%= link_to '新增文章', new_admin_post_path %></li>
             <li><%= link_to '新增分類', new_category_path %></li>
           <% end %>
           <% if user_signed_in? %>
@@ -58,19 +58,22 @@
       <div id="sidebar-wrapper">
           <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
               <li>
-                  <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-caret-down fa-stack-1x "></i></span> 文章分類</a>
-                     <ul class="nav-pills nav-stacked" style="list-style-type:none;">
-                        <% Category.all.map{|p| p.name}.each do |name| %>
-                        <% category_id = Category.find_by(name: name).id %>
-                          <li><%=link_to name+"(#{Post.where(category_id: category_id).count})", category_post_path(category: name) %></li>
-                        <% end %>
-                  </ul>
+                  <%= link_to admin_posts_path do %>
+                    Blog文章管理
+                    <span class="fa-stack fa-lg pull-left">
+                    <i class="fa fa-cog fa-stack-1x"></i>
+                  <% end %>
               </li>
 
               <li>
-                  <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-calendar fa-stack-1x "></i></span>Calendar</a>
-                  <%= render partial: '/calendar' %>
+                  <%= link_to admin_posts_path do %>
+                    Blog留言管理
+                    <span class="fa-stack fa-lg pull-left">
+                    <i class="fa fa-cog fa-stack-1x"></i>
+                  <% end %>
               </li>
+
+
               <li>
                   <%= link_to games_path do%>
                     遊戲reviews
