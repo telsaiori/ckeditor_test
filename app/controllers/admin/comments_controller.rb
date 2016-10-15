@@ -63,14 +63,14 @@ class Admin::CommentsController < ApplicationController
   def destroy
     @admin_comment.destroy
     respond_to do |format|
-      format.html { redirect_to admin_comments_url, notice: 'Comment was successfully destroyed.' }
+      format.html { redirect_back(fallback_location: root_path, notice: '刪除成功') }
       format.json { head :no_content }
     end
   end
 
   def multi_del
     Comment.destroy_all(id: params[:del_comments])
-    redirect_to admin_comments_path, notice: '刪除成功'
+    redirect_back(fallback_location: root_path, notice: '刪除成功') 
   end
 
   private
