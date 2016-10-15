@@ -5,7 +5,13 @@ class Admin::CommentsController < ApplicationController
   # GET /admin/comments
   # GET /admin/comments.json
   def index
-    @admin_comments = Admin::Comment.where(commentable_type: "Post")
+    if params[:type] == "game"
+      @admin_comments = Admin::Comment.where(commentable_type: "Game")
+    elsif params[:type] == "mboard"
+      @admin_comments = Admin::Comment.where(commentable_type: "Mboard")
+    else
+      @admin_comments = Admin::Comment.where(commentable_type: "Post")
+    end
   end
 
   # GET /admin/comments/1

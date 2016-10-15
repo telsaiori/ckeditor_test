@@ -7,9 +7,9 @@
     <span class="caret"></span>
   </button>
   <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-    <li role="presentation"><%= link_to 'Blog留言管理', admin_comments_path, role: 'menuitem', tabindex: '-1' %></li>
-    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+    <li role="presentation"><%= link_to 'Blog留言管理', admin_comments_path(type: "blog"), role: 'menuitem', tabindex: '-1' %></li>
+    <li role="presentation"><%= link_to '遊戲review留言管理', admin_comments_path(type: "game"), role: 'menuitem', tabindex: '-1' %></li>
+     <li role="presentation"><%= link_to '留言板留言', admin_comments_path(type: "mboard"), role: 'menuitem', tabindex: '-1' %></li>
     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
   </ul>
 </div>
