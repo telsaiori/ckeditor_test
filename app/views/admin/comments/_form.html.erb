@@ -16,7 +16,7 @@
             <td><%= check_box_tag "del_comments[]", admin_comment.id %></td>
             <td><%= admin_comment.name %></td>
             <td><%= admin_comment.comment %></td>
-            <td><%= raw(link_to_post(admin_comment))  %></td>
+            <td><%= link_to_post(admin_comment)  %></td>
             <td><%= link_to '刪除', admin_comment_path(admin_comment), method: :delete, data: { confirm: 'Are you sure?' },class: 'btn btn-danger btn-xs' %></td>
           </tr>
         <% end %>
