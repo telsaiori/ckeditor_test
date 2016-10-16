@@ -9,7 +9,7 @@
           <h4 class="media-heading"><%= reply.name %>
               <small><%= reply.created_at.to_s(:db) %></small>
           </h4>
-          <%= reply.reply %>
+          <%= best_in_place reply,:reply, path: post_comment_reply_path(comment.commentable, comment,reply) %>
       </div>
       <br>
     <% end %>
