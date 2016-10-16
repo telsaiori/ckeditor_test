@@ -24,8 +24,9 @@ class RepliesController < ApplicationController
   end
 
   def destroy
-    if @reply.restroy
-      redirect_back fallback_location root_path, notice: '刪除留言成功'
+    if @reply.destroy
+      redirect_back fallback_location: root_path, notice: '刪除留言成功'
+    end
   end
 
   private
