@@ -1,6 +1,5 @@
  <div class="media reply-list">
 
-
     <% comment.replies.each do |reply| %>
       <a class="pull-left" href="#">
         <%= image_tag user_image(User.find_by(name: reply.name)), class: "media-object" %>
