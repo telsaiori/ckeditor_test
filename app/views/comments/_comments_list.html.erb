@@ -17,8 +17,7 @@
           <br>
           <br>
           <%= render partial: 'replies/reply_form', locals: {comment: comment} %>
-          <%= link_to '刪除留言', post_comment_path(comment.commentable, comment), method: :delete, data: {confirm: "確定要刪除?"},class: 'pull-right' %>
-        <% end %>
+          <i class="fa fa-trash pull-right" aria-hidden="true"></i><%= link_to '刪除留言', post_comment_path(comment.commentable, comment), method: :delete, data: {confirm: "確定要刪除?"},class: 'pull-right' %>        <% end %>
     </div>
   <% end %>
 </div>

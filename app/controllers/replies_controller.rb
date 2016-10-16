@@ -1,4 +1,5 @@
 class RepliesController < ApplicationController
+  before_action :set_reply, only: [:update, :destroy]
 
   def create
     @post = Post.find(params[:post_id])
@@ -22,11 +23,19 @@ class RepliesController < ApplicationController
     end
   end
 
+  def destroy
+    if @reply.restroy
+      redirect_back fallback_location root_path, notice: '刪除留言成功'
+  end
+
   private
 
   def reply_params
     params.require(:reply).permit(:name, :reply)
   end
 
+  def set_reply
+    @reply = Reply.find(params[:id])
+  end
 
 end
