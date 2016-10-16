@@ -8,7 +8,7 @@
            <small>August 25, 2014 at 9:30 PM</small>
       </h4>
       
-      <p><%= comment.comment %></p><br>
+      <p><%= best_in_place comment, :comment, path: post_comment_path(@post, comment) %></p><br>
         <%= link_to '展開留言'+"(#{comment.replies.count})", '#', class: 'more_replies' %><br>
 
         <%= render partial: 'replies/reply', locals: {comment: comment} %>

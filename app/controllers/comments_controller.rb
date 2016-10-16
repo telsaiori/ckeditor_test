@@ -39,6 +39,13 @@ class CommentsController < ApplicationController
       else
         redirect_to game_path(@comment.commentable), notice: "修改失敗"
       end
+    else
+      respond_to do |format|
+        if @comment.update(comment_params)
+          format.html { redirect_to post_path(@comment.commentable), notice: "修改成功" }
+          format.json { respond_with_bip(@comment) }
+        end
+      end
     end
   end
 
@@ -62,7 +69,7 @@ class CommentsController < ApplicationController
   end
 
   def set_comment
-    @comment = Comment.find(params[:id]) 
+    @comment = Comment.includes(:replies).find(params[:id]) 
   end
 
 end

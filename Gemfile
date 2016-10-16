@@ -17,6 +17,7 @@ gem 'kaminari'
 gem 'redcarpet'
 gem 'coderay'
 gem 'rails-bootstrap-markdown'
+gem 'best_in_place', '~> 3.0.1'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0.6'
