@@ -1,6 +1,8 @@
 class Admin::MboardsController < ApplicationController
   layout 'admin'
   before_action :set_admin_mboard, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :auth_user
 
   # GET /admin/mboards
   # GET /admin/mboards.json

@@ -1,6 +1,7 @@
 class GamesController < ApplicationController
   before_action :find_game, only:[:show,:edit,:update,:destroy, :add_review]
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :add_review]
+  before_action :auth_user, except: [:index, :show]
   before_action :never_review?, only: [:add_review]
 
   def index

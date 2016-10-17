@@ -47,11 +47,13 @@
       <% post.comments.each do |comment| %>
         <div class="media well" id= <%= comment.id %> >
           <div class="media-left">
-            <%= image_tag user_image(current_user) %>
+            <%= image_tag user_image(User.find_by(name: comment.name)) %>
           </div>
           <div class="media-body">
             <span><%= comment.comment %></span><br>
-            <%= link_to "刪除", mboard_comment_path(post, comment), method: :delete, remote: true %>
+            <% if comment.name == current_user.name %>
+              <%= link_to "刪除", mboard_comment_path(post, comment), method: :delete, remote: true %>
+            <% end %>
           </div>
         </div>
       <% end %>

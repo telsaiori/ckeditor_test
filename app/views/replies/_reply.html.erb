@@ -8,8 +8,17 @@
           <h4 class="media-heading"><%= reply.name %>
               <small><%= reply.created_at.to_s(:db) %></small>
           </h4>
-          <p><%= best_in_place reply,:reply, path: post_comment_reply_path(comment.commentable, comment,reply) %></p>
-          <i class="fa fa-trash" aria-hidden="true"></i><%= link_to "刪除留言", post_comment_reply_path(comment.commentable, comment, reply), method: :delete%>
+          <p>
+            <% if current_user.name == reply.name %>
+              <%= best_in_place reply,:reply, path: post_comment_reply_path(comment.commentable, comment,reply) %>
+            <% else %>
+              <%= reply.reply %>
+            <% end %>
+          </p>
+          
+          <% if current_user.name == reply.name %>
+            <i class="fa fa-trash" aria-hidden="true"></i><%= link_to "刪除留言", post_comment_reply_path(comment.commentable, comment, reply), method: :delete%>
+          <% end %>
       </div>
       <br>
     <% end %>

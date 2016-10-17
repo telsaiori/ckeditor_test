@@ -1,6 +1,8 @@
 class Admin::GamesController < ApplicationController
   layout 'admin'
   before_action :set_admin_game, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :auth_user
 
   # GET /admin/games
   # GET /admin/games.json

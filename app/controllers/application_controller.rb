@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   def auth_user
     unless current_user.try(:is_admin)
-      redirect_to user_facebook_omniauth_authorize_path
+      redirect_to root_path, alert: '無使用權限'
     end
   end
 

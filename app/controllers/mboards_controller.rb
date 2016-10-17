@@ -1,6 +1,7 @@
 class MboardsController < ApplicationController
 
   before_action :set_post, only: [:show, :destroy, :update]
+  before_action :authenticate_user!, except: [:index, :show]
   
   def index
     @posts = Mboard.includes(:comments).order("created_at desc")

@@ -8,7 +8,14 @@
            <small>August 25, 2014 at 9:30 PM</small>
       </h4>
       
-      <p><%= best_in_place comment, :comment, path: post_comment_path(@post, comment) %></p><br>
+      <p>
+        <% if current_user.name == comment.name %>
+          <%= best_in_place comment, :comment, path: post_comment_path(@post, comment) %>
+        <% else %>
+          <%= comment.comment %>
+        <% end %>
+          
+      </p><br>
         <%= link_to '展開留言'+"(#{comment.replies.count})", '#', class: 'more_replies' %><br>
 
         <%= render partial: 'replies/reply', locals: {comment: comment} %>
@@ -17,7 +24,9 @@
           <br>
           <br>
           <%= render partial: 'replies/reply_form', locals: {comment: comment} %>
-          <i class="fa fa-trash pull-right" aria-hidden="true"></i><%= link_to '刪除留言', post_comment_path(comment.commentable, comment), method: :delete, data: {confirm: "確定要刪除?"},class: 'pull-right' %>        <% end %>
+          <% if current_user.name == comment.name %>
+            <i class="fa fa-trash pull-right" aria-hidden="true"></i><%= link_to '刪除留言', post_comment_path(comment.commentable, comment), method: :delete, data: {confirm: "確定要刪除?"},class: 'pull-right' %>        <% end %>
+          <% end %>
     </div>
   <% end %>
 </div>

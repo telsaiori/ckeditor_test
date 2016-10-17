@@ -1,6 +1,8 @@
 class Admin::CommentsController < ApplicationController
   layout "admin"
   before_action :set_admin_comment, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :auth_user
 
   # GET /admin/comments
   # GET /admin/comments.json
