@@ -22,7 +22,7 @@
           </div>
         <% end %>
         <% if user_signed_in? %>
-          <% if post.name == current_user.name%>
+          <% if post.name == current_user.try(:name) %>
             <%= button_tag '編輯', class: 'edit-comment-form btn btn-primary btn-xs', type: :button %>
             <%= link_to "刪除", mboard_path(post), method: :delete, data: {confirm: "確定刪除?"}, class: 'btn btn-warning btn-xs' %>
           <% end %>
@@ -31,7 +31,7 @@
       
 
       <% if user_signed_in? %>
-        <% if post.name == current_user.name%>
+        <% if post.name == current_user.try(:name) %>
           <div class="mboard-edit editor" %>
             <%= render partial: 'edited_comment', locals: {post: post} %>
           </div>
@@ -51,7 +51,7 @@
           </div>
           <div class="media-body">
             <span><%= comment.comment %></span><br>
-            <% if comment.name == current_user.name %>
+            <% if comment.name == current_user.try(:name) %>
               <%= link_to "刪除", mboard_comment_path(post, comment), method: :delete, remote: true %>
             <% end %>
           </div>

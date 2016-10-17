@@ -9,7 +9,7 @@
       </h4>
       
       <p>
-        <% if current_user.name == comment.name %>
+        <% if current_user.try(:name) == comment.name %>
           <%= best_in_place comment, :comment, path: post_comment_path(@post, comment) %>
         <% else %>
           <%= comment.comment %>
