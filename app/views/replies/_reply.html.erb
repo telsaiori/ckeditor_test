@@ -10,7 +10,7 @@
           </h4>
           <p>
             <% if current_user.try(:name) == reply.name %>
-              <%= best_in_place reply,:reply, path: post_comment_reply_path(comment.commentable, comment,reply) %>
+              <%= best_in_place reply,:reply, path: post_comment_reply_path(comment.commentable, comment,reply), as: :textarea %>
             <% else %>
               <%= reply.reply %>
             <% end %>

@@ -10,7 +10,7 @@
       
       <p>
         <% if current_user.try(:name) == comment.name %>
-          <%= best_in_place comment, :comment, path: post_comment_path(@post, comment) %>
+          <%= best_in_place comment, :comment, path: post_comment_path(@post, comment), as: :textarea  %>
         <% else %>
           <%= comment.comment %>
         <% end %>
