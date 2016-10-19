@@ -3,7 +3,7 @@
 </p>
 <hr>
 
-<p><span class="glyphicon glyphicon-time"></span>發表於 <%= @post.created_at.to_s(:db) %></p>
+<p><span class="glyphicon glyphicon-time"></span>發表於 <%= @post.created_at.to_s(:long) %></p>
 <p>分類: <%= @post.category.name %></p>
 <p>
   <%= raw @post.content %>

@@ -5,7 +5,7 @@
     </a>
     <div class="media-body">
       <h4 class="media-heading"><%=comment.name %>
-           <small>August 25, 2014 at 9:30 PM</small>
+           <small><%= comment.created_at.to_s(:long) %></small>
       </h4>
       
       <p>
